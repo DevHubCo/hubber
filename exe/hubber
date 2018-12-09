@@ -1,5 +1,9 @@
 #!/usr/bin/env ruby
 
-require 'irb'
+git_path = File.expand_path("../.git", __dir__)
 
-IRB.start
+if File.exist?(git_path)
+  railties_path = File.expand_path("../lib", __dir__)
+  $:.unshift(railties_path)
+end
+require "hubber/cli"
